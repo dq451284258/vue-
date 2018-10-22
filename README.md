@@ -5,7 +5,7 @@ vue2 + vuex + vue-router + webpack + ES6
 # 安装项目依赖
 在package.json中：
 
-```
+```json
 "dependencies": {
     "axios": "0.18.0",                          //ajax异步请求
     "element-ui": "2.4.6",                      //elementUI组件
@@ -19,7 +19,7 @@ vue2 + vuex + vue-router + webpack + ES6
 ```
 可以直接使用指令安装所有依赖：
 
-```
+```sh
 npm install
 ```
 
@@ -49,7 +49,7 @@ npm install
 
     此文件是项目的html入口，所有的组件会被引入id为app的div中
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -67,7 +67,7 @@ npm install
 
     vue项目的程序入口，主要引入全局的组件，包括router，vuex
 
-```
+```js
 import Vue from 'vue'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
@@ -95,7 +95,7 @@ new Vue({
     很多时候我们浏览一些页面是需要权限的，例如一般的个人中心页面需要我们有登录态，如果没有的话需跳转到登录页，这时候就涉及到页面的重定向问题。
     vue-router提供了beforeEach方法，我们可以获得to参数以得到即将跳转的路由。
 
-```
+```js
 import router from './router'
 import store from './store'
 import NProgress from 'nprogress' // Progress 进度条
@@ -161,7 +161,7 @@ router.afterEach(() => {
     当有了页面以后，我们需要路由系统来访问这些页面,新建index.js
 
 
-```
+```js
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -197,7 +197,7 @@ export default new Router({
 
     在config目录的index.js中,使用代理解决跨域问题，生产环境不存在该问题
     
-```
+```js
 module.exports = {
   dev: {
     proxyTable: {
@@ -215,7 +215,7 @@ module.exports = {
 2. 使用axios统一处理接口返回，组件里通过方法请求并返回回掉
 
 
-```
+```js
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 import store from '../store'
@@ -292,7 +292,7 @@ export default service
 ```
 3. 路由模块设置主入口，再分配子路由
 
-```
+```js
 {
     path: '/example',
     component: Layout,
@@ -325,7 +325,7 @@ export default service
     在store/modules中新建app.js
     
     
-```
+```js
 const app = {
   state: {
     sidebar: {
@@ -373,7 +373,7 @@ export default app
 Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 Getter 接受 state 作为其第一个参数：
 
-```
+```js
 const getters = {
   sidebar: state => state.app.sidebar,
   device: state => state.app.device
@@ -382,7 +382,7 @@ export default getters
 ```
 这样一个完整的store：
 
-```
+```js
 const store = new Vuex.Store({
   modules: {
     app
@@ -394,11 +394,11 @@ export default store
 ```
 获取状态：
 
-```
+```js
 this.$store.state.app.sidebar
 ```
 改变状态：
 
-```
+```js
 this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
 ```
