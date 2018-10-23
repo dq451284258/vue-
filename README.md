@@ -202,7 +202,7 @@ module.exports = {
   dev: {
     proxyTable: {
       '/api': {
-        target: 'https://zyt-dev.arctron.cn',
+        target: 'https://example.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
